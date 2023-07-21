@@ -185,7 +185,4 @@ public class BookDAO {
         }
         return null;
     }
-
-    // Add other methods as per requirements
-
 }

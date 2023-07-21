@@ -1,12 +1,16 @@
 package com.masai;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Librarian {
-    private String name;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
     private String email;
     private String password;
 
@@ -16,8 +20,20 @@ public class Librarian {
         this.password = password;
     }
 
+    public Librarian() {
+        // Default constructor required by JPA
+    }
+
     public boolean verifyPassword(String inputPassword) {
         return password.equals(inputPassword);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,10 +62,6 @@ public class Librarian {
 
     @Override
     public String toString() {
-        return "Librarian [name=" + name + ", email=" + email + ", password=" + password + "]";
-    }
-
-    public Object getId() {
-        return email; // Return the email as the ID
+        return "Librarian [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
     }
 }

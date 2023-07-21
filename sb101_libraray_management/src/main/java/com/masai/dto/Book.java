@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -19,7 +20,10 @@ public class Book {
     private String author;
     private String genre;
     private boolean availability;
-    private Student rentedBy;
+    
+    @ManyToOne
+    private Student rentedBy; // Change the type to Student
+
     private LocalDate returnDate;
     private String feedback; // Add feedback field
     private int rating; // Add rating field
@@ -35,52 +39,52 @@ public class Book {
     }
 
     public int getId() {
-		return id;
-	}
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getAuthor() {
-		return author;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	public String getGenre() {
-		return genre;
-	}
+    public String getGenre() {
+        return genre;
+    }
 
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
-	public boolean isAvailability() {
-		return availability;
-	}
+    public boolean isAvailability() {
+        return availability;
+    }
 
-	public void setAvailability(boolean availability) {
-		this.availability = availability;
-	}
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
 
-	@Override
+    @Override
     public String toString() {
         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", genre=" + genre + ", availability="
                 + availability + "]";
     }
 
-	public void setRentedBy(Student student) {
+    public void setRentedBy(Student student) {
         this.rentedBy = student;
     }
 

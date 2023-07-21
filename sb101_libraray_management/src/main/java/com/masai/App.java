@@ -67,15 +67,12 @@ public class App {
 
         switch (choice) {
             case 1:
-                // Librarian login
                 performLibrarianLogin();
                 break;
             case 2:
-                // Librarian signup
                 performLibrarianSignup();
                 break;
             case 0:
-                // Go back to the main menu
                 return;
             default:
                 System.out.println("Invalid choice. Please select a valid option.");
@@ -314,15 +311,12 @@ public class App {
 
         switch (choice) {
             case 1:
-                // Student login
                 performStudentLogin();
                 break;
             case 2:
-                // Student signup
                 performStudentSignup();
                 break;
             case 0:
-                // Go back to the main menu
                 return;
             default:
                 System.out.println("Invalid choice. Please select a valid option.");
@@ -330,51 +324,59 @@ public class App {
     }
 
     private static void performStudentLogin() {
-        System.out.println("Enter your email:");
-        String studentEmail = scanner.nextLine();
-        System.out.println("Enter your password:");
-        String studentPassword = scanner.nextLine();
+        try {
+            System.out.println("Enter your email:");
+            String studentEmail = scanner.nextLine();
+            System.out.println("Enter your password:");
+            String studentPassword = scanner.nextLine();
 
-        Student student = StudentDAO.getStudentByEmail(studentEmail);
-        if (student != null && student.verifyPassword(studentPassword)) {
-            System.out.println("Student Login Successful.");
-            
-            System.out.println("1. View available books in the library");
-            System.out.println("2. Apply filters and sorting options to search and browse books");
-            System.out.println("3. Rent a book");
-            System.out.println("4. Return a rented book");
-            System.out.println("5. Provide feedback and ratings on rented books");
-            System.out.println("6. Log out");
+            Student student = StudentDAO.getStudentByEmail(studentEmail);
+            if (student != null && student.verifyPassword(studentPassword)) {
+                System.out.println("Student Login Successful.");
+                int choice;
+                do {
+                    System.out.println("1. View available books in the library");
+                    System.out.println("2. Apply filters and sorting options to search and browse books");
+                    System.out.println("3. Rent a book");
+                    System.out.println("4. Return a rented book");
+                    System.out.println("5. Provide feedback and ratings on rented books");
+                    System.out.println("6. Log out");
+                    
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (choice) {
-                case 1:
-                    viewAvailableBooks();
-                    break;
-                case 2:
-                	searchAndBrowseBooks();
-                    break;
-                case 3:
-                    rentBook(student);
-                    break;
-                case 4:
-                    returnBook();
-                    break;
-                case 5:
-                    provideFeedbackAndRating();
-                    break;
-                case 6:
-                    System.out.println("You have successfully logged out from your student account.");
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please select a valid option.");
+                    switch (choice) {
+                        case 1:
+                            viewAvailableBooks();
+                            break;
+                        case 2:
+                            searchAndBrowseBooks();
+                            break;
+                        case 3:
+                            rentBook(student);
+                            break;
+                        case 4:
+                            returnBook();
+                            break;
+                        case 5:
+                            provideFeedbackAndRating();
+                            break;
+                        case 6:
+                            System.out.println("You have successfully logged out from your student account.");
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please select a valid option.");
+                    }
+                } while (choice != 6); // Keep repeating until user chooses to log out
+            } else {
+                System.out.println("Invalid email or password. Please try again.");
             }
-        } else {
-            System.out.println("Invalid email or password. Please try again.");
+        } catch (Exception e) {
+            System.out.println("An error occurred during student login: " + e.getMessage());
         }
     }
+
+
 
     private static void viewAvailableBooks() {
         try {

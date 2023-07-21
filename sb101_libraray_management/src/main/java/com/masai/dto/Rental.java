@@ -26,6 +26,7 @@ public class Rental {
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     private Student student;
 
+    @JoinColumn(name = "return_date")
     private LocalDate returnDate;
 
     public Rental() {
