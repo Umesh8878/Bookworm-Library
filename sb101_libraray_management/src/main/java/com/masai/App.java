@@ -376,8 +376,6 @@ public class App {
         }
     }
 
-
-
     private static void viewAvailableBooks() {
         try {
             List<Book> availableBooks = BookDAO.getAllBooks();
