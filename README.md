@@ -1,6 +1,6 @@
 # Bookworm Library - Readme
 
-<img src="./images/Bookworm Library.png"  width="60%" height="350px"/>
+![Bookworm Library](https://github.com/Umesh8878/Bookworm-Library/assets/115473268/60b8503a-1937-42c7-94e3-1d194411ba58)
 
 ## Overview
 The Bookworm Library is a software application designed to efficiently manage the operations of a library. It provides a platform for librarians and students to interact with the library's resources, perform administrative tasks, and facilitate book rentals and feedback.
